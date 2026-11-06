@@ -1,0 +1,33 @@
+﻿1,1 REQ-FUN-001 Pick and place by classification,The cell shall pick each part delivered to the pick position and place it in the OK bin or the reject bin according to its classification.,STK-01 Plant manager,Demonstration
+2,4 REQ-FUN-002 Classify before pick,The vision function shall classify each part as OK or NOK before the robot picks it.,STK-05 Quality manager,Test
+3,5 REQ-FUN-003 Vision timeout treated as NOK,"If no classification result is available within 500 ms (A) of the camera trigger, the cell shall treat the part as NOK and raise a warning.",STK-05 Quality manager,Test
+4,6 REQ-FUN-004 Operating modes,"The cell shall provide the modes Automatic, Manual (teach), Maintenance and Fault, with at most one mode active at any time.",STK-02 Operator; ISO 10218-2 (operating modes),Test
+5,7 REQ-FUN-005 Mode change only when stopped,A mode change shall be possible only while the robot is stopped.,ISO 10218-2 (operating modes),Test
+6,8 REQ-FUN-006 Counting and logging,"The cell shall count OK, NOK and fault events and log each with a timestamp.","STK-01 Plant manager, STK-05 Quality manager",Test
+7,9 REQ-PER-001 Cycle time,In Automatic mode the cycle time shall not exceed 3.0 s (A) for 95 % of cycles.,STK-01 Plant manager,Analysis
+8,10 REQ-PER-002 Placement accuracy,The place position error shall not exceed 1.0 mm (A).,STK-05 Quality manager; ISO 9283 (accuracy criteria),Test
+9,11 REQ-PER-003 Classification quality,The vision function shall classify at least 98 % (A) of parts correctly and pass at most 0.5 % (A) of NOK parts as OK.,STK-05 Quality manager,Test
+10,12 REQ-PER-004 Availability,"Availability shall be at least 95 % (A) over an 8 h shift, excluding planned maintenance.",STK-01 Plant manager,Analysis
+11,13 REQ-PER-005 Payload margin,The mass of part plus gripper shall not exceed 50 % (A) of the robot rated payload.,STK-03 Maintenance technician,Analysis
+12,14 REQ-SAF-001 Risk assessment,A documented risk assessment following the ISO 12100 method shall exist for the cell and define the required performance level of each safety function.,"STK-04 Safety officer / conformity body; ISO 12100, ISO 10218-2",Inspection
+13,15 REQ-SAF-002 Emergency stop,"Actuating any emergency stop device shall stop all hazardous motion, with the stop category chosen from the risk assessment.","STK-04 Safety officer / conformity body; ISO 13850, IEC 60204-1",Test
+14,16 REQ-SAF-003 Door interlock stop,Opening the interlocked access door in Automatic mode shall trigger a protective stop within T_door (TBC) and prevent restart until a deliberate reset.,STK-04 Safety officer / conformity body; ISO 14119,Test
+15,17 REQ-SAF-004 Light curtain stop,Interrupting the light curtain at the bin exchange opening shall trigger a protective stop within T_lc (TBC).,STK-04 Safety officer / conformity body; IEC 61496,Test
+16,18 REQ-SAF-005 Performance level,"Each safety function shall reach the performance level required by REQ SAF-001 (working assumption: PL d, category 3, TBC).",ISO 13849-1 or IEC 62061,Analysis
+17,19 REQ-SAF-006 Manual mode speed limit,In Manual mode the cell shall limit the tool centre point speed to 250 mm/s (TBC against ISO 10218) and permit motion only while the operator holds an enabling device.,"ISO 10218-1 and -2 (reduced speed, enabling device)",Test
+18,20 REQ-SAF-007 Stopping time against safety distance,"The total stopping time (detection, processing, braking) shall be short enough that the distance between each safeguard and the hazard is at least the minimum safety distance calculated per ISO 13855.","ISO 13855, ISO 13857",Analysis
+19,21 REQ-SAF-008 Gripper holds on power loss,"On loss of power or air, the cell shall retain the part in the gripper and keep the robot stopped.",STK-04 Safety officer / conformity body; risk assessment,Test
+20,22 REQ-SAF-009 Single fault tolerance,The cell shall keep each safety function operating after a single fault and bring a detected fault to the safe state.,ISO 13849-1 (category 3 principle),Analysis
+21,23 REQ-SAF-010 Safety functions in a safety-rated controller,Safety functions shall be implemented in a safety-rated controller without relying on the standard PLC.,"ISO 13849-1, IEC 62061",Inspection
+22,24 REQ-INT-001 PLC and robot communication,The PLC and the robot controller shall exchange commands and status over one industrial protocol (to be chosen) with a cycle time of at most 10 ms (A).,ISO 10218-1; IEC 61131-3,Test
+23,25 REQ-INT-002 Vision result latency,The vision subsystem shall return a classification result to the PLC within 300 ms (A) of the camera trigger.,STK-01 Plant manager,Test
+24,26 REQ-INT-003 Supply voltages,"
+The cell shall operate from a 230 V AC (+/- 10 %, A) mains supply and a 24 V DC control supply.",IEC 60204-1,Inspection
+25,27 REQ-ENV-001 Ambient conditions,"The cell shall operate at 5 to 40 degrees C and at most 80 % relative humidity, non-condensing (A).",STK-01 Plant manager,Test
+26,28 REQ-ENV-002 EMC,The cell shall meet the EMC immunity and emission limits for industrial environments.,"IEC 61000-6-2, IEC 61000-6-4",Test
+27,29 REQ-CYB-001 Authenticated configuration,Network-connected components shall require authentication for configuration changes and have remote access disabled by default.,STK-06 IT/network administrator; IEC 62443; ISO 10218:2025 (cybersecurity),Inspection
+28,30 REQ-MNT-001 Inspection intervals,The information for use shall define the inspection and test intervals of every safety function.,STK-04 Safety officer / conformity body; ISO 10218-2 (information for use),Inspection
+29,31 REQ-MNT-002 Gripper pad replacement,A worn gripper pad shall be replaceable within 15 min (A) using standard tools.,STK-03 Maintenance technician,Demonstration
+30,32 REQ-SAF-011 No restart after power restoration,"After a loss and restoration of power, the cell shall remain stopped until a deliberate reset is performed.","ISO 12100, Annex B: unexpected start-up",Test
+31,33 REQ-SAF-012 Energy isolation for maintenance,The cell shall provide a lockable means to isolate and depressurise the compressed air supply before maintenance work on the gripper.,"ISO 12100, Annex B: stored energy",Inspection
+32,34 REQ-SAF-013 No robot entry during bin exchange,"While a bin exchange is in progress, the robot shall be prevented from moving into the bin-exchange zone.","ISO 12100, Annex B: crushing hazard",Test
